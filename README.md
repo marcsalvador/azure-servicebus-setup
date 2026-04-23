@@ -278,6 +278,3 @@ and:
 ✔ Use `AmqpTcp` (NOT WebSockets)
 ✔ Use topic `fel-events` + subscription `events`
 ✔ Ready for local development
-
-```
-```
