@@ -1,4 +1,3 @@
-````markdown
 # 🚀 Service Bus Local Setup Guide (Docker + ZIP Package)
 
 This guide walks you through setting up a **local Azure Service Bus Emulator** using **Docker** and the provided ZIP package.
@@ -83,8 +82,6 @@ services:
 run.bat
 ```
 
----
-
 ### Option 2: Manual Docker Command
 
 ```bash
@@ -158,15 +155,11 @@ The **local Service Bus Emulator does NOT support `AmqpWebSockets`**.
 
 You **must change the transport type to `AmqpTcp`**.
 
----
-
 ### ❌ Default (Cloud - NOT working locally)
 
 ```csharp
-TransportType = ServiceBusTransportType.AmqpWebSockets
+TransportType = ServiceBusTransportType.AmqpWebSockets;
 ```
-
----
 
 ### ✅ Correct (Local Emulator)
 
@@ -187,18 +180,10 @@ var serviceBusClient = new ServiceBusClient(
     });
 ```
 
----
-
 ### 📌 Why this is required
 
-* `AmqpWebSockets` → used for Azure cloud (port 443, firewall-friendly)
-* `AmqpTcp` → required for **local emulator (port 5672)**
-
-If not updated, you will encounter:
-
-* Connection failures
-* Timeout issues
-* Socket errors
+* `AmqpWebSockets` → used for Azure cloud (port 443)
+* `AmqpTcp` → required for local emulator (port 5672)
 
 ---
 
@@ -294,4 +279,5 @@ and:
 ✔ Use topic `fel-events` + subscription `events`
 ✔ Ready for local development
 
+```
 ```
